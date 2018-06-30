@@ -4,7 +4,7 @@
     "pages/logs/logs"
   ],
   "window": {
-    "navigationBarTitleText": ""
+    "navigationBarTitleText": "仿饿了么"
   },
   "tabBar": {
     "list": [
