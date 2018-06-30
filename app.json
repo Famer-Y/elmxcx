@@ -1,20 +1,38 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/user/user"
   ],
   "window": {
-    "navigationBarTitleText": "仿饿了么"
+    "navigationBarBackgroundColor": "#0097FE",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "饿了么",
+    "navigationStyle": "default",
+    "backgroundColor": "#0097FE",
+    "backgroundTextStyle": "light"    
   },
   "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#0097FE",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "外卖",
+        "iconPath": "image/tabbar/elm.png",
+        "selectedIconPath": "image/tabbar/elm_selected.png"
       },
       {
         "pagePath": "pages/logs/logs",
-        "text": "日志"
+        "text": "订单",
+        "iconPath": "image/tabbar/order.png",
+        "selectedIconPath": "image/tabbar/order_selected.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的",
+        "iconPath": "image/tabbar/user.png",
+        "selectedIconPath": "image/tabbar/user_selected.png"
       }
     ]
   },

@@ -1,0 +1,12 @@
+<view class="topbar">
+  <navigator class='address'>
+    <image src="/image/location.png" class='address_icon'></image>黄淮学院南区寝室楼13号空
+  </navigator>
+  <view class='weather'>
+    <view class='weather_text'><text class='up'>30C</text><text class='down'>多云天</text></view>
+    <image src='/image/weather/night_cloud.png' class='weather_icon'></image>
+  </view>
+</view>
+<view>
+  <swiper></swiper>
+</view>
