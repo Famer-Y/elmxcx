@@ -2,10 +2,14 @@
   padding: 10px;
   color: #fff;
   background-color: #0097FE;
+}
+
+.topbar-item-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 }
 
 .address {
@@ -16,21 +20,26 @@
   text-overflow: ellipsis;  /*替换.*/
   white-space: nowrap;  /*不进行换行*/
   overflow: hidden; /*超过区域隐藏*/
-}
+} 
+
+/* .address_text::after {
+  content: "d";
+} */
 
 .address_icon {
-  margin-bottom: -3px;
   width: 20px;
   height: 20px;
   padding-right: 4px; 
+  margin-bottom: -4px;
 }
 
 .weather {
-    display: flex;
+  display: flex;
 }
 
 .weather_text {
   margin: 5px;
+  text-align: right;
 }
 
 .up {
@@ -41,11 +50,146 @@
 .down {
   display:  block;
   font-size: 8px;
+  
 }
 
 .weather_icon {
   width: 25px;
   height: 25px;
   padding-top: 8px;
-   /* margin-bottom: -3px;  */
 }
+
+.search {
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  border-radius: 10px/50%;
+  color: #212121;
+  font-size: 12px;
+  padding: 5px;
+  text-align: center;
+}
+.search_icon {
+  width: 10px;
+  height: 10px;
+}
+
+.show {
+  background-color: #efefef;
+  height: 100%;
+}
+
+.show image {
+  width: 100%;
+}
+
+.classify {
+  background-color: #ffffff;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.classify .classify-item { 
+  width: 100%;
+  height: 100%;
+  padding: 10px 5px;
+}
+
+.classify-icon {
+  width: 100%;
+}
+
+.shop-block {
+  margin-top: 10px;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.shop-block-top {
+  padding: 10px;
+  font-size: 12px;
+  border-bottom: 1px solid #000;
+}
+
+.shop-block-top .filters {
+  display: flex;
+}
+
+.shop-block-top .filters .filter{
+  flex: 1;
+}
+
+.shop-block-top .filters .start{
+  font-weight: bold;
+  margin-right: 50px;
+}
+
+.shop-block-top .filters .middle{
+  margin: 0 10px;
+}
+
+.shop-block-top .filters .end{
+  margin-left: 10px;
+}
+
+.shop-block-content
+{
+   padding: 10px; 
+}
+
+.shop-block-content .content-top {
+  display: flex;
+}
+
+.shop-block-content .content-top .shop-logo {
+  width: 70px;
+  height: 70px;
+}
+
+.shop-block-content .content-top .shop-logo image{
+  width: 100%;
+  height: 100%;
+}
+
+.shop-block-content .content-top .shop-desc {
+  padding: 0 10px;
+}
+
+.shop-block-content .content-top .shop-desc .shop-name{
+  font-weight: bold;
+}
+
+.shop-block-content .content-top .shop-desc .shop-score-sell{
+  font-size: 10px;
+  padding: 10px 0; 
+}
+
+.shop-block-content .content-top .shop-desc .shop-score-sell .score-star{
+  color: orange;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.shop-block-content .content-top .shop-desc .shop-score-sell .score-number{
+  color: orangered;
+  margin-right: 10px;
+}
+
+.shop-block-content .content-top .shop-desc .dispatching{
+  font-size: 10px; 
+}
+
+.shop-block-content .content-top .shop-desc .dispatching .price{
+  display: inline-block;
+  font-size: 10px; 
+}
+
+.shop-block-content .content-top .shop-desc .dispatching .distance-time{
+  display: block;
+  font-size: 10px; 
+  float: right;
+  padding-left: 10px;
+}
+

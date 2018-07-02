@@ -1,12 +1,61 @@
 <view class="topbar">
-  <navigator class='address'>
-    <image src="/image/location.png" class='address_icon'></image>黄淮学院南区寝室楼13号空
-  </navigator>
-  <view class='weather'>
-    <view class='weather_text'><text class='up'>30C</text><text class='down'>多云天</text></view>
-    <image src='/image/weather/night_cloud.png' class='weather_icon'></image>
+  <view class='topbar-item-top'>
+    <navigator class='address'>
+      <image src="/image/location.png" class='address_icon'></image><text class='address_text'>黄淮学院南区寝室楼13号空</text>
+    </navigator>
+    <view class='weather'>
+      <view class='weather_text'><text class='up'>30°</text><text class='down'>阴</text></view>
+      <image src='/image/weather/night_cloud.png' class='weather_icon'></image>
+    </view>
   </view>
+  <navigator class='topbar-item-footer'>
+    <view class='search'>
+      <icon type='search' size='12'></icon> 搜索商家、商品名称
+    </view>
+  </navigator>
 </view>
-<view>
-  <swiper></swiper>
+ <view class='show'>
+  <image src='/image/index/show.jpg' mode='widthFix'></image>
+</view> 
+<view class='classify'>
+  <navigator class='classify-item'>
+    <image src='/image/index/classify.jpeg' class='classify-icon' mode='widthFix'></image>
+  </navigator>
+  <navigator class='classify-item'>
+    <image src='/image/index/classify.jpeg' class='classify-icon' mode='widthFix'></image>
+  </navigator>
+  <navigator class='classify-item'>
+    <image src='/image/index/classify.jpeg' class='classify-icon' mode='widthFix'></image>
+  </navigator>
+</view>
+<view class='shop-block'>
+  <view class='shop-block-top'>
+    <view class='filters'>
+      <view class='filter start'>综合排序</view>
+      <view class='filter middle'>销量最高</view>
+      <view class='filter middle'>距离最远</view>
+      <view class='filter end'>筛选<text class="iconfont icon-funnel" style='font-size:12px'></text></view>
+    </view>
+  </view>
+  <view class='shop-block-content'>
+    <view class='content-top'>
+      <view class='shop-logo'><image src='/image/index/classify.jpeg' mode='widthFix'></image></view>
+      <view class='shop-desc'>
+        <view class='shop-name'>兄弟俩麻辣爆肚(关庄店)</view>
+        <view class='shop-score-sell'>
+          <text class='score-star'>★★★★★</text>
+          <text class='score-number'>4.9</text>
+          <text class='sell'>月售1066单</text>
+        </view>
+        <view class='dispatching'>
+          <view class='price'>
+            <text class='start-price'>￥10起送</text> | <text class='dispatching-price'>配送费￥4</text>
+          </view>
+          <view class='distance-time'>
+            <text class='distance'>3.2km</text> | <text class='time'>36分钟</text>
+          </view>
+        </view>
+      </view>      
+    </view>
+  </view>
 </view>

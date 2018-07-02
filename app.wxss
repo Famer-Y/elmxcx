@@ -1,5 +1,12 @@
+@import './font.wxss';
 page {
   margin: 0px;
   padding: 0px;
-  background-color: #F0F8ED;
+  /* background-color: #F0F8ED; */
+  font-family: "console";
+  background-color: #f00;
+}
+
+.normal_bg_color {
+  background-color: white;
 }
