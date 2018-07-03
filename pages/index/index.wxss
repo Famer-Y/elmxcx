@@ -95,7 +95,8 @@
   width: 100%;
   height: 100%;
   /* padding: 10px 5px; */
-  margin: 10px 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .classify-icon {
@@ -220,6 +221,10 @@
   margin-right: 3px; 
 }
 
+.shop-block-content .content-bottom {
+  font-size: 10px;
+}
+
 .shop-block-content .content-bottom .foodImage {
   display: flex;
   flex-direction: row;
@@ -230,10 +235,15 @@
 .shop-block-content .content-bottom .foodImage .foodImage-item{
   width: 100%;
   height: 100%;
-  margin: 0 5px;
 }
 
 .shop-block-content .content-bottom .foodImage .foodImage-item image{
   width: 100%;
   height: 100%;
 }
+
+.image-middle {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+

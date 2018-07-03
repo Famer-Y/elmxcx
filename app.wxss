@@ -10,3 +10,7 @@ page {
 .normal_bg_color {
   background-color: white;
 }
+
+.s-text {
+  text-decoration:line-through;
+}
