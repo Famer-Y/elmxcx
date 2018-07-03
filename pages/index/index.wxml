@@ -1,7 +1,7 @@
 <view class="topbar">
   <view class='topbar-item-top'>
     <navigator class='address'>
-      <image src="/image/location.png" class='address_icon'></image><text class='address_text'>黄淮学院南区寝室楼13号空</text>
+      <image src="/image/location.png" class='address_icon'></image><text class='address_text'>XXXXXXXXXXX</text>
     </navigator>
     <view class='weather'>
       <view class='weather_text'><text class='up'>30°</text><text class='down'>阴</text></view>
@@ -56,6 +56,41 @@
           </view>
         </view>
       </view>      
+    </view>
+    <view class='content-middle'>
+      <view class='discount'>
+        <view class='discount-item'>
+          <image src='/image/discount/sub.png'></image>满15减7,满30减10
+        </view>
+        <view class='discount-item'>
+          <image src='/image/discount/sub.png'></image>满15减7,满30减10
+        </view>
+        <view class='discount-item' style='display:{{show}}'>
+          <image src='/image/discount/sub.png'></image>满15减7,满30减10
+        </view>
+        <view class='discount-item' style='display:{{show}}'>
+          <image src='/image/discount/sub.png'></image>满15减7,满30减10
+        </view>
+        <view class='discount-item' style='display:{{show}}'>
+          <image src='/image/discount/sub.png'></image>满15减7,满30减10
+        </view>
+      </view>
+      <view class='active'>
+        <text bindtap='showDiscount'>5个活动▲</text>
+      </view>
+    </view>
+    <view class='content-bottom'>
+      <view class='foodImage'>
+        <view class='foodImage-item'>
+          <image src='/image/index/classify.jpeg' mode='widthFix'></image>
+        </view>
+        <view class='foodImage-item'>
+          <image src='/image/index/classify.jpeg' mode='widthFix'></image>
+        </view>
+        <view class='foodImage-item'>
+          <image src='/image/index/classify.jpeg' mode='widthFix'></image>
+        </view>
+      </view>
     </view>
   </view>
 </view>

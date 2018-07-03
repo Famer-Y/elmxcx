@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    show: "none",
+    isShowed: false
   },
 
   /**
@@ -62,5 +63,19 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  showDiscount: function() {
+    if (this.data.isShowed) {
+      this.setData({
+        show: 'none'
+      });
+      this.data.isShowed = false;
+    } else {
+      this.setData({
+        show: 'flex'
+      });
+      this.data.isShowed = true;
+    }    
   }
 })
