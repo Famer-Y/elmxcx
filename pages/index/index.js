@@ -6,7 +6,10 @@ Page({
    */
   data: {
     show: "none",
-    isShowed: false
+    isShowed: false,
+    top: '-1',
+    middle: '-1',
+    scorll: ''
   },
 
   /**
@@ -77,5 +80,26 @@ Page({
       });
       this.data.isShowed = true;
     }    
-  }
+  },
+
+  show_zhpx: function() {
+    this.setData({
+      top: '2',
+      middle: '1',
+      scorll: 'true'
+    });
+    console.log(this.data.scorll);
+  },
+
+  hide_zhpx: function() {
+    this.setData({
+      top: '-1',
+      middle: '-1', 
+      scorll: ''
+    });
+    console.log(this.data.scorll);
+  },
+  preventTouchMove: function (e) {
+
+  },
 })

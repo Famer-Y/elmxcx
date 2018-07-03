@@ -4,7 +4,8 @@ page {
   padding: 0px;
   /* background-color: #F0F8ED; */
   font-family: "console";
-  background-color: #f00;
+  background-color: #F5F5F5;
+  color: #717171;
 }
 
 .normal_bg_color {
