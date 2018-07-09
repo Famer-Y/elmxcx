@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/shop/shop",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/user/user"
+    "pages/user/user" 
   ],
   "window": {
     "navigationBarBackgroundColor": "#0097FE",

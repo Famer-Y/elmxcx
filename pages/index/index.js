@@ -1,4 +1,12 @@
 // pages/index/index.js
+var sortName = [
+  '综合排序',
+  '起送价最低',
+  '配送速度最快',
+  '评分最高',
+  '好评优先'
+];
+
 Page({
 
   /**
@@ -9,7 +17,10 @@ Page({
     isShowed: false,
     top: '-1',
     middle: '-1',
-    scorll: ''
+    topshow: 'none',
+    middleshow: 'none',
+    sortTypeId: '1',
+    sortTypeName: sortName[0]
   },
 
   /**
@@ -86,19 +97,44 @@ Page({
     this.setData({
       top: '2',
       middle: '1',
-      scorll: 'true'
+      topshow: 'block',
+      middleshow: 'block'
     });
-    console.log(this.data.scorll);
   },
 
   hide_zhpx: function() {
     this.setData({
       top: '-1',
-      middle: '-1', 
-      scorll: ''
+      middle: '-1',
+      topshow: 'none',
+      middleshow: 'none'
     });
-    console.log(this.data.scorll);
   },
+
+  tapSortTypeId: function(e) {
+    switch (e.target.dataset.sortTypeId) {
+      case '1': 
+        this.data.sortTypeName = sortName[0];
+        break;
+      case '2':
+        this.data.sortTypeName = sortName[1];
+        break;
+      case '3':
+        this.data.sortTypeName = sortName[2];
+        break;
+      case '4':
+        this.data.sortTypeName = sortName[3];
+        break;
+      case '5':
+        this.data.sortTypeName = sortName[4];
+        break;
+    }
+    this.setData({
+      sortTypeId: e.target.dataset.sortTypeId,
+      sortTypeName: this.data.sortTypeName
+    });
+  },
+
   preventTouchMove: function (e) {
 
   },

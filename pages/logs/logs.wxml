@@ -1,3 +1,5 @@
 <view class='test'>
-
+  <view wx:for="{{list}}">
+    {{item}}
+  </view>
 </view>

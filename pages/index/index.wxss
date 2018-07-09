@@ -3,7 +3,7 @@
 }
 
 .topbar {
-  padding: 10px;
+  padding: 5px 10px 8px 10px;
   color: #fff;
   background-color: #0097FE;
 }
@@ -14,27 +14,39 @@
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  margin-bottom: 5px;
 }
 
 .address {
+  width: 100%;
+  font-size: 17px;
+  font-weight: bold;
+} 
+
+.address .address-left {
+  display: block;
+  float: left;
   min-width: 100px;
-  max-width: 72%;
-  font-size: 16px;
-  font-weight: 600;
+  max-width:75%;
   text-overflow: ellipsis;  /*替换.*/
   white-space: nowrap;  /*不进行换行*/
   overflow: hidden; /*超过区域隐藏*/
-} 
-
-/* .address_text::after {
-  content: "d";
-} */
+}
 
 .address_icon {
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
   padding-right: 4px; 
-  margin-bottom: -4px;
+  margin-bottom: -3px;
+}
+
+.address-zhedie {
+  display: block;
+  float: left;
+  width: 8px;
+  height: 8px;
+  padding-top: 5px;
+  margin-left: 5px;
 }
 
 .weather {
@@ -42,7 +54,7 @@
 }
 
 .weather_text {
-  margin: 5px;
+  margin: 2px;
   text-align: right;
 }
 
@@ -121,23 +133,25 @@
 
 .shop-block-top .filters {
   display: flex;
+  justify-content: space-between;
 }
 
-.shop-block-top .filters .filter{
-  flex: 1;
+.color-000 {
+  color: #000;
 }
 
-.shop-block-top .filters .start{
+.shop-block-top .filters .filters-item{
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.shop-block-top .filters .filters-item .middle{
+  margin: 0 30px;
+}
+
+.sort-type {
   font-weight: bolder;
-  margin-right: 50px;
-}
-
-.shop-block-top .filters .middle{
-  margin: 0 10px;
-}
-
-.shop-block-top .filters .end{
-  margin-left: 10px;
 }
 
 .shop-block-content{
@@ -167,6 +181,7 @@
 
 .shop-block-content .content-top .shop-desc .shop-name{
   font-weight: bold;
+  color: #000;
 }
 
 .shop-block-content .content-top .shop-desc .shop-score-sell{
@@ -253,6 +268,15 @@
   margin-right: 10px;
 }
 
+.shop-block-content .content-bottom .foodImage .foodImage-item .about-food {
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.shop-block-content .content-bottom .foodImage .foodImage-item .foodName {
+  margin: 5px 0;
+}
+
 .shop-block-content .content-bottom .foodImage .foodImage-item .about-food .price-icon {
   font-size: 8px;
   color: #f20;
@@ -270,23 +294,30 @@
   color: #707070;
 }
 
-.zhpx-pop {
-  z-index: 2;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background-color: #fff;
-  width: 100%;
+.color-1990E6 {
+  color: #1990E6;
 }
 
 .ul {
   color: #000;
   font-size: 12px;
   margin-left: 10px;
+  margin-right: 10px;
 }
 
-.li {
+ .ul .li {
   margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ul .active {
+  color: #1990E6;
+}
+
+.main {
+  z-index: 0;
 }
 
 .btm {
@@ -298,5 +329,21 @@
   width: 100%;
   height: 100%;
   filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;
+}
+
+.zhpx-pop {
+  z-index: 2;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.sort-type-icon {
+  width: 6px;
+  height: 6px;
+  margin-left: 4px;
+  padding-bottom: 1px;
 }
 

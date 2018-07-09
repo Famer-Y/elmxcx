@@ -2,7 +2,10 @@
   <view class="topbar">
     <view class='topbar-item-top'>
       <navigator class='address'>
-        <image src="/image/location.png" class='address_icon'></image><text class='address_text'>XXXXXXXXXXX</text>
+        <view class='address-left'>
+          <image src="/image/location.png" class='address_icon'></image><text class='address_text'>黄淮学院南区寝室楼13号楼</text>
+        </view>
+        <image src='/image/zhedie-white.png' class='address-zhedie'></image>
       </navigator>
       <view class='weather'>
         <view class='weather_text'><text class='up'>30°</text><text class='down'>阴</text></view>
@@ -31,13 +34,15 @@
   </view>
   <view class='shop-block'>
     <view class='shop-block-top'>
-      <view class='filters'>
-        <view class='filter start' bindtap='show_zhpx'>综合排序</view>
-        <view class='filter middle'>销量最高</view>
+    <view class='filters'>
+      <view class='filter sort-type color-000' bindtap='show_zhpx'>{{sortTypeName}}<image src='/image/zhedie-black.png' class='sort-type-icon'></image></view>
+      <view class='filters-item'>
+        <view class='filter'>销量最高</view>
         <view class='filter middle'>距离最远</view>
-        <view class='filter end'>筛选<text class="iconfont icon-funnel" style='font-size:12px'></text></view>
+        <view class='filter'>筛选<text class="iconfont icon-loudou" style='font-size:12px'></text></view>
       </view>
     </view>
+  </view>
     <view class='shop-block-content'>
       <view class='content-top'>
         <view class='shop-logo'><image src='/image/index/classify.jpeg' mode='widthFix'></image></view>
@@ -109,23 +114,25 @@
   </view>
 </view>
 
-<view class='zhpx-pop' style='z-index: {{top}}' catchtouchmove='preventTouchMove'>
+<view class='zhpx-pop' style="z-index: {{top}};display:{{topshow}}" catchtouchmove='preventTouchMove'>
   <view class='shop-block-top'>
     <view class='filters'>
-      <view class='filter start'>综合排序</view>
-      <view class='filter middle'>销量最高</view>
-      <view class='filter middle'>距离最远</view>
-      <view class='filter end'>筛选<text class="iconfont icon-funnel" style='font-size:12px'></text></view>
+      <view class='filter color-1990E6 sort-type' bindtap='hide_zhpx'>{{sortTypeName}}<image src='/image/zhankai.png' class='sort-type-icon'></image></view>
+      <view class='filters-item'>
+        <view class='filter'>销量最高</view>
+        <view class='filter middle'>距离最远</view>
+        <view class='filter'>筛选<text class="iconfont icon-loudou" style='font-size:12px'></text></view>
+      </view>
     </view>
   </view>
   <view class='ul'>
-    <view class='li'>综合排序</view>
-    <view class='li'>起送价最低</view>
-    <view class='li'>配送速度最快</view>
-    <view class='li'>评分最高</view>
-    <view class='li'>好评优先</view>
+    <view class="li {{sortTypeId==1?'active':''}}" data-sort-type-id="1" bindtap='tapSortTypeId'>综合排序 <text class="iconfont icon-duigou2" style='font-size:12px' wx:if="{{sortTypeId==1}}"></text></view>
+    <view class="li {{sortTypeId==2?'active':''}}" data-sort-type-id="2" bindtap='tapSortTypeId'>起送价最低<text class="iconfont icon-duigou2" style='font-size:12px' wx:if="{{sortTypeId==2}}"></text></view>
+    <view class="li {{sortTypeId==3?'active':''}}" data-sort-type-id="3" bindtap='tapSortTypeId'>配送速度最快<text class="iconfont icon-duigou2" style='font-size:12px' wx:if="{{sortTypeId==3}}"></text></view>
+    <view class="li {{sortTypeId==4?'active':''}}" data-sort-type-id="4" bindtap='tapSortTypeId'>评分最高<text class="iconfont icon-duigou2" style='font-size:12px' wx:if="{{sortTypeId==4}}"></text></view>
+    <view class="li {{sortTypeId==5?'active':''}}" data-sort-type-id="5" bindtap='tapSortTypeId'>好评优先<text class="iconfont icon-duigou2" style='font-size:12px' wx:if="{{sortTypeId==5}}"></text></view>
   </view>
 </view>
 
-<view class='btm' bindtap='hide_zhpx' style='z-index: {{middle}}' catchtouchmove='preventTouchMove'>
+<view class='btm' bindtap='hide_zhpx' style="z-index: {{middle}}; display:{{middleshow}}" catchtouchmove='preventTouchMove'>
 </view>
