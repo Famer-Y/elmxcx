@@ -1,20 +1,18 @@
-// pages/shop/shop.js
-var goods = require('./goods.js');
+// pages/test/test.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    topClassifyId: 1,
-    goods: goods
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(goods);
+  
   },
 
   /**

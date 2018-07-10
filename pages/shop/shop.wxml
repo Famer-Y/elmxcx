@@ -16,42 +16,46 @@
       <text class="margin-custom">约36分钟</text>
       <text class="margin-custom">距离2.6km</text>
     </view>
-    <view class="sign">本店现推出满减活动,欢迎新老顾客前来光临</view>
+    <view class="sign">本店现推出满减活动,欢迎新ddddddddddddddd老顾客前来光临</view>
     <view class="activity"><view><image src="/image/discount/sub.png" class="sub"></image>满20减10，满40减15，满60减30</view><view>7个优惠</view></view>
   </view>
-  <view class="shop">
-    <view class="top-classify">
-      <view class="top-classify-item {{topClassifyId==1?'action':''}}">点餐</view>
-      <view class="top-classify-item {{topClassifyId==2?'action':''}}">评价</view>
-      <view class="top-classify-item {{topClassifyId==3?'action':''}}">商家</view>
-    </view>
-    <view class="shop-detail">
-      <scroll-view class="good-classify" scroll-y="true">
-        <view class="classify-item" wx:for="{{goodClassify}}" wx:key="" wx:for-item="classify">
-          <view class="classify-logo"></view>
-          <view class="classify-name">{{classify.name}}</view>
-        </view>        
-      </scroll-view>
-      <scroll-view class="good-container" scroll-y="true">
-        <view class="goods" wx:for="{{goodClassify}}" wx:key="" wx:for-item="classify">
-          <view class="classify-content">
-            <view class="classify-name">{{classify.name}}<text class="classify-sign">{{classify.sign}}</text></view>
+  <view class="top-classify">
+    <view class="top-classify-item {{topClassifyId==1?'action':''}}">点餐</view>
+    <view class="top-classify-item {{topClassifyId==2?'action':''}}">评价</view>
+    <view class="top-classify-item {{topClassifyId==3?'action':''}}">商家</view>
+  </view>
+  <view class="container">
+    <scroll-view class="classify-container">
+      <view class="classify-item active" wx:for="{{goods}}" wx:key="" wx:for-item="classify">
+        <view class="classify-logo"></view>
+        <view class="classify-name">{{classify.classifyName}}</view>
+      </view>
+    </scroll-view>
+    <scroll-view class="foods-container">
+      <view class="foods" wx:for="{{goods}}" wx:key="" wx:for-item="classify">
+        <view class="foods-classify">
+          <view class="classify-name">{{classify.classifyName}}</view>
+          <view class="classify-desc ellipsis">{{classify.classifyDesc}}</view>
+        </view>
+        <view class="foods-item" wx:for="{{classify.goodsList}}" wx:for-item="goods" wx:key="">
+          <view class="food-image">
+            <image src="{{goods.goodsPic}}" mode="widthFix"></image>
           </view>
-          <view class="good-all" wx:for="{{classify.goodsList}}" wx:for-item="id" wx:key="*this">
-            <view class="good-image"><image src="{{goods[id].image}}"></image></view>
-            <view class="good-detail">
-              <view class="good-name">{{goods[id].name}}</view>
-              <view class="good-sign">{{goods[id].sign}}</view>
-              <view class="sell-good"><text class="sale">月售{{goods[id].sold}}单</text><text class="good-rate">好评率97%</text></view>
-              <view class="price-buy">
-                <view class="price"><text class="rmb">￥</text>{{goods[id].price}}</view>
-                  <view class="select" wx:if="{{goods[id].spec.length > 0}}">选规格</view>  
-                <view class="buy-logo" wx:else><image src="/image/add.png" ></image></view> 
-              </view>
+          <view class="food-detail">
+            <view class="food-name">{{goods.goodsName}}</view>
+            <view class="food-desc ellipsis">{{goods.goodsDesc}}</view>
+            <view class="achievement">
+              <text class="sales">月售{{goods.goodsSales}}单</text>
+              <text>好评率{{goods.applauseRate}}%</text>
+            </view>
+            <view class="price-spec">
+              <view class="price">￥{{goods.goodsPrice}}</view>
+              <view class="spec" wx:if="{{goods.specList.length > 0}}">选规格</view> 
+              <view class="buy-logo" wx:else><image src="/image/add.png"></image></view>
             </view>
           </view>
         </view>
-      </scroll-view>
-    </view>
+      </view>
+    </scroll-view>
   </view>
 </view>

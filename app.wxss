@@ -16,3 +16,10 @@ page {
 .s-text {
   text-decoration:line-through;
 }
+
+.ellipsis {
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

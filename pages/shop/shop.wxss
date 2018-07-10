@@ -76,7 +76,7 @@
   height: 14px;
 }
 
-.shop .top-classify {
+.top-classify {
   display: flex;
   justify-content:space-around;
   padding-top: 10px;
@@ -85,110 +85,141 @@
   border-bottom: 2px solid #DEDEDE;
 }
 
-.shop .top-classify .top-classify-item {
+.top-classify .top-classify-item {
   padding-bottom: 10px;
 }
 
-.shop .top-classify .action {
+.top-classify .action {
   border-bottom: 2px solid #2794F7;
 }
 
-.shop .shop-detail {
+.container {
   display: flex;
-  height: 100%;
 }
 
-.good-classify {
-  width: 100px;
-  height: 100%;
+.classify-container {
+  width: 20%;
   background-color: #F8F8F8;
-  text-align: center;
 }
 
-.good-classify .classify-item {
-  padding: 15px 0;
-  font-size: 12px;
+.classify-container .classify-item {
+  padding: 15px 5px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #7F7F7F;
+  display: flex;
+  justify-content: center;
   border-bottom: 1px solid #000;
 }
 
-.good-container {
-  background-color: #fff; 
-  padding-left: 10px;
+.classify-container .active {
+  background-color: #fff;
+  color: #666666;
 }
 
-.good-container .goods .classify-content {
-  padding: 5px 0;
-  margin-bottom: 10px; 
+.foods-container {
+  width: 80%;
+  background-color: #fff;
 }
 
-.good-container .goods .classify-content .classify-name{
-  font-size: 12px;
-}
-.good-container .goods .classify-content .classify-sign{
-  font-size: 9px;
-  color: #CCCCCC;
-  margin-left: 10px;
+.foods-container .foods{
+  max-width: 100%;
+  margin: 10px;
 }
 
-.good-container .goods .good-all {
-  display: flex;
-  margin-bottom: 20px;  
-}
-
-.good-container .goods .good-all .good-image image {
-  width: 80px;
-  height: 80px;
-}
-
-.good-container .goods .good-all .good-detail{
+.foods-container .foods .foods-classify {
   width: 100%;
-  height: 100%;
-  padding: 0 10px;
+  display: flex;
+}
+
+.foods-container .foods .foods-classify .classify-name {
+  width: 35px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #666666;
+}
+
+.foods-container .foods .foods-classify .classify-desc {
+  width: 320rpx;
+  font-size: 12px;
+  color: #CDCDCD;
+}
+
+.foods-container .foods .foods-item {
+  margin: 10px 0;
+  width: 100%;
+  height: 75px;
+  display: flex; 
+}
+
+.foods-container .foods .foods-item .food-image {
+  margin-right: 10px;
+}
+
+.foods-container .foods .foods-item .food-image image {
+  width: 75px;
+  height: 75px;
+}
+
+.foods-container .foods .foods-item .food-detail {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 
-.good-container .goods .good-all .good-detail .good-name {
-  color: #333333;
-  font-size: 16px;
-  font-weight: 600;
+.foods-container .foods .foods-item .food-detail .food-name{
+  flex-grow: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #323232;
 }
 
-.good-container .goods .good-all .good-detail .good-sign {
-  color: #C4C4C4;
+.foods-container .foods .foods-item .food-detail .food-desc {
+  margin-top: 2px;
+  flex-grow: 0;
   font-size: 10px;
+  width: 330rpx;
+  color: #A0A0A0;
 }
 
-.good-container .goods .good-all .good-detail .sell-good {
-  color: #8B8B8B;
-  font-size: 12px;
+.foods-container .foods .foods-item .food-detail .achievement {
+  margin-top: 2px;
+  flex-grow: 0;
+  font-size: 11px;
+  width: 330rpx;
+  color: #787878;
 }
 
-.good-container .goods .good-all .good-detail .sell-good .sale{
+.foods-container .foods .foods-item .food-detail .achievement .sales{
   margin-right: 5px;
 }
 
-.good-container .goods .good-all .good-detail .price-buy {
+.foods-container .foods .foods-item .food-detail .price-spec {
+  flex-grow: 2;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  color: #ED6B13;
-  margin-top: 5px;
+  align-items: flex-end;
 }
 
-.good-container .goods .good-all .good-detail .price-buy .price{
+.foods-container .foods .foods-item .food-detail .price-spec .price {
   font-size: 14px;
+  font-weight: bold;
+  color: #FB6804;
 }
 
-.good-container .goods .good-all .good-detail .price-buy .select{
-  padding: 5px 10px;
+.foods-container .foods .foods-item .food-detail .price-spec .spec {
+  padding: 3px 5px;
   color: #fff;
-  font-size: 10px; 
-  background-color: #3299E8;
+  font-size: 8px;
+  font-weight: bolder;
   border-radius: 10px/50%;
+  background-color: #3298E8;
 }
 
-.good-container .goods .good-all .good-detail .price-buy .buy-logo image{
-  width: 20px;
-  height: 20px;
-} 
+
+.foods-container .foods .foods-item .food-detail .price-spec .buy-logo image {
+  width: 18px;
+  height: 18px;
+}

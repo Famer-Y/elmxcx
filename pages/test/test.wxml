@@ -1,0 +1,13 @@
+
+<view class="food-container ">
+  <view class="food-image">
+    <image></image>
+  </view>
+  <view class="food-text">
+    <view class="text ellipsis">dddddddddddddddddddddddddddddddddddddddddddddddd</view>
+    <view class="flex">
+      <view class="left"></view>
+      <view class="right"></view>
+    </view>
+  </view>
+</view>

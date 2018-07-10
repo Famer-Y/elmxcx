@@ -3,7 +3,8 @@
     "pages/shop/shop",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/user/user" 
+    "pages/user/user",
+    "pages/test/test"
   ],
   "window": {
     "navigationBarBackgroundColor": "#0097FE",
