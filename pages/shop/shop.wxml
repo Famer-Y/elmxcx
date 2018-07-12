@@ -57,7 +57,7 @@
             </view>
             <view class="price-spec">
               <view class="price">￥{{goods.goodsPrice}}</view>
-              <view class="spec" wx:if="{{goods.specList.length > 0}}">选规格</view> 
+              <view class="spec" wx:if="{{goods.specList.length > 0}}" bindtap="showSpecDetail">选规格</view> 
               <view class="buy-logo" wx:else><image src="/image/add.png"></image></view>
             </view>
           </view>
@@ -65,8 +65,8 @@
       </view>
     </scroll-view>
   </view>
-  <view class="cart-detail" hidden="">
-    <view class="mask"></view>
+  <view class="cart-detail" hidden="{{cartDetailShowed}}">
+    <view class="mask" bindtap="hideCartDetail"></view>
     <view class="list">
       <view class="top">
         <view class="title">已选商品</view>
@@ -99,12 +99,27 @@
     </view>
   </view>
   <view class="cart">
-    <view class="cart-logo-out">
+    <view class="cart-logo-out" bindtap="showCartDetail">
       <view class="cart-logo-in">
         <image src="/image/shop/cart-logo.png" mode="widthFix"></image>
       </view>
     </view>
     <view class="cart-count">2</view>
-    <view class=""></view>
+    <view class="cart-total">
+      <view class="total-price">￥10</view>
+      <view class="cart-desc">满10元配送</view>
+    </view>
+    <view class="button button-buy-bg">
+      <text class="" hidden='1'>￥10起送</text>
+      <text class="" hidden='1'>还差￥7配送</text>
+      <text class="">去结算</text>
+    </view>
+  </view>
+
+  <view class="custom-dialog-mask"></view>
+  <view class="custom-dialog">
+    <view class="title"></view>
+    <view class="content"></view>
+    <view class="footer"></view>
   </view>
 </view>

@@ -7,7 +7,8 @@ Page({
    */
   data: {
     topClassifyId: 1,
-    goods: goods
+    goods: goods,
+    cartDetailShowed: true,
   },
 
   /**
@@ -64,5 +65,24 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  showSpecDetail: function() {
+    wx.showModal({
+      title: 'haha',
+      content: '',
+    })
+  },
+
+  showCartDetail: function () {
+    this.setData({
+      cartDetailShowed: !this.data.cartDetailShowed
+    });
+  },
+
+  hideCartDetail: function () {
+    this.setData({
+      cartDetailShowed: true
+    });
   }
 })
