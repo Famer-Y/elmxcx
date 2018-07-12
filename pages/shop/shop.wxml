@@ -17,7 +17,14 @@
       <text class="margin-custom">距离2.6km</text>
     </view>
     <view class="sign">本店现推出满减活动,欢迎新ddddddddddddddd老顾客前来光临</view>
-    <view class="activity"><view><image src="/image/discount/sub.png" class="sub"></image>满20减10，满40减15，满60减30</view><view>7个优惠</view></view>
+    <view class="activity">
+      <view class="activity-item">
+        <image src="/image/discount/sub.png" class="sub"></image>满20减10，满40减15，满60减30
+      </view>
+      <view class="activity-item">7个优惠
+        <image src="/image/zhedie-black.png" style="width:10px;height:10px;margin-left:3px;"></image>
+      </view>
+    </view>
   </view>
   <view class="top-classify">
     <view class="top-classify-item {{topClassifyId==1?'action':''}}">点餐</view>
@@ -31,7 +38,7 @@
         <view class="classify-name">{{classify.classifyName}}</view>
       </view>
     </scroll-view>
-    <scroll-view class="foods-container">
+    <scroll-view class="foods-container" >
       <view class="foods" wx:for="{{goods}}" wx:key="" wx:for-item="classify">
         <view class="foods-classify">
           <view class="classify-name">{{classify.classifyName}}</view>
@@ -57,5 +64,47 @@
         </view>
       </view>
     </scroll-view>
+  </view>
+  <view class="cart-detail" hidden="">
+    <view class="mask"></view>
+    <view class="list">
+      <view class="top">
+        <view class="title">已选商品</view>
+        <view class="clear">清空</view>
+      </view>
+      <view class="content">
+        <view class="content-item">
+          <view class="goods-basis">
+            <view class="goods-name">加千张</view>
+            <view class="goods-price">￥3</view>
+          </view>          
+          <view class="goods-other">            
+            <view class="remove"><image src="/image/sub.png"></image></view>
+            <view class="num">1</view>
+            <view class="insert"><image src="/image/add.png"></image></view>
+          </view>
+        </view>
+        <view class="content-item">
+          <view class="goods-basis">
+            <view class="goods-name">加千张</view>
+            <view class="goods-price">￥3</view>
+          </view>          
+          <view class="goods-other">            
+            <view class="remove"><image src="/image/sub.png"></image></view>
+            <view class="num">1</view>
+            <view class="insert"><image src="/image/add.png"></image></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cart">
+    <view class="cart-logo-out">
+      <view class="cart-logo-in">
+        <image src="/image/shop/cart-logo.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="cart-count">2</view>
+    <view class=""></view>
   </view>
 </view>
