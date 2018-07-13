@@ -115,11 +115,32 @@
       <text class="">去结算</text>
     </view>
   </view>
-
-  <view class="custom-dialog-mask"></view>
-  <view class="custom-dialog">
-    <view class="title"></view>
-    <view class="content"></view>
-    <view class="footer"></view>
+  <view class="custom-dialog" hidden="{{dialogHidde}}" catchtouchmove="preventTouchMove"> 
+    <view class="dialog-mask" bindtap="hideSpecDetail"></view>
+    <view class="dialog-model">
+      <view class="dialog-content">
+        <view class="top">
+          <view class="fill"></view>
+          <view class="title">爆肚龙口粉丝</view>
+          <view class="cancel" bindtap="hideSpecDetail"><image src="/image/cancel.png"></image></view>
+        </view>
+        <view class="spec">
+          <view class="spec-item">
+            <view class="spec-title">口味</view>
+            <view class="spec-content">
+              <view class="spec-content-item active">微辣</view>
+              <view class="spec-content-item">微辣</view>
+              <view class="spec-content-item">微辣</view>
+              <view class="spec-content-item">微辣</view>
+              <view class="spec-content-item">微辣</view>
+            </view>
+          </view>
+        </view>
+        <view class="footer">
+          <view class="price"><text style="font-size:10px;">￥</text>10</view>
+          <view class="button">选好了</view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

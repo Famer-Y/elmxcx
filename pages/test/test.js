@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    dialogHidde: true
   },
 
   /**
@@ -62,5 +62,16 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  showDialog: function() {
+    this.setData({
+      dialogHidde: false
+    });
+  },
+
+  hideDialog: function () {
+    this.setData({
+      dialogHidde: true
+    });
   }
 })

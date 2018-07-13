@@ -9,6 +9,7 @@ Page({
     topClassifyId: 1,
     goods: goods,
     cartDetailShowed: true,
+    dialogHidde: true
   },
 
   /**
@@ -84,5 +85,17 @@ Page({
     this.setData({
       cartDetailShowed: true
     });
-  }
+  },
+  showSpecDetail: function () {
+    this.setData({
+      dialogHidde: false
+    });
+  },
+  hideSpecDetail: function () {
+    this.setData({
+      dialogHidde: true
+    });
+  },
+  preventTouchMove: function (e) {
+  },
 })
