@@ -1,5 +1,6 @@
 // pages/shop/shop.js
 var goods = require('./goods.js');
+var animationShowHeight = 135;
 Page({
 
   /**
@@ -9,7 +10,11 @@ Page({
     topClassifyId: 1,
     goods: goods,
     cartDetailShowed: true,
-    dialogHidde: true
+    dialogHidde: true,
+    discount_dialog_hidde: true,
+    classifySeletedId: "c1",
+    scrollDown: false,
+    classifyViewed: null
   },
 
   /**
@@ -30,7 +35,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
   },
 
   /**
@@ -97,5 +101,67 @@ Page({
     });
   },
   preventTouchMove: function (e) {
+  },
+
+  showDiscountDialog: function () {
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(animationShowHeight).step()
+    this.setData({
+      animationData: animation.export(),
+      discount_dialog_hidde: false,
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 200)
+  },
+  hideDiscountDialog: function () {
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation;
+    animation.translateY(animationShowHeight).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        discount_dialog_hidde: true,
+      })
+    }.bind(this), 200)
+  },
+  tapClassify: function (e) {
+    var classifyId = e.target.dataset.classifyId;
+    this.setData({
+      classifyViewed: classifyId
+    });
+    var self = this;
+    setTimeout(function () {
+      self.setData({
+        classifySeletedId: classifyId
+      });
+    }, 100);
+  },
+  onGoodsScroll: function (e) {
+    if (e.detail.scrollTop > 20 && !this.data.scrollDown) {
+      this.setData({
+        scrollDown: true
+      });
+    } else if (e.detail.scrollTop < 20 && this.data.scrollDown) {
+      this.setData({
+        scrollDown: false
+      });
+    }
   },
 })

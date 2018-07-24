@@ -1,45 +1,51 @@
 <view class="main">
-  <view class="top">
-    <view class="top-image">
-      <image src="/image/index/show.jpg" mode="widthFix"></image>
-    </view>
-    <view class="top-avatar">
-      <image src="/image/index/classify.jpeg"></image>
-    </view>
-  </view>
-  <view class="detail">
-    <view class="shop-name">兄妹俩麻辣爆肚(关庄店)</view>
-    <view class="more">
-      <text class="margin-custom">4.9</text>
-      <text class="margin-custom">月售1109单</text>
-      <text class="margin-custom">蜂鸟专送</text>
-      <text class="margin-custom">约36分钟</text>
-      <text class="margin-custom">距离2.6km</text>
-    </view>
-    <view class="sign">本店现推出满减活动,欢迎新ddddddddddddddd老顾客前来光临</view>
-    <view class="activity">
-      <view class="activity-item">
-        <image src="/image/discount/sub.png" class="sub"></image>满20减10，满40减15，满60减30
+  <!-- 背景图和商家头像 -->
+  <view class="header {{scrollDown?'hidden':''}}">
+    <view class="top">
+      <view class="top-image">
+        <image src="/image/index/show.jpg" mode="widthFix"></image>
       </view>
-      <view class="activity-item">7个优惠
-        <image src="/image/zhedie-black.png" style="width:10px;height:10px;margin-left:3px;"></image>
+      <view class="top-avatar">
+        <image src="/image/index/classify.jpeg"></image>
       </view>
     </view>
+    <!-- 商家详情 -->
+    <view class="detail">
+      <view class="shop-name">兄妹俩麻辣爆肚(关庄店)</view>
+      <view class="more">
+        <text class="margin-custom">4.9</text>
+        <text class="margin-custom">月售1109单</text>
+        <text class="margin-custom">蜂鸟专送</text>
+        <text class="margin-custom">约36分钟</text>
+        <text class="margin-custom">距离2.6km</text>
+      </view>
+      <view class="sign">本店现推出满减活动,欢迎新ddddddddddddddd老顾客前来光临</view>
+      <view class="activity" bindtap="showDiscountDialog">
+        <view class="activity-item">
+          <image src="/image/discount/sub.png" class="sub"></image>满20减10，满40减15，满60减30
+        </view>
+        <view class="activity-item">7个优惠
+          <image src="/image/zhedie-black.png" style="width:10px;height:10px;margin-left:3px;"></image>
+        </view>
+      </view>
+    </view>
+    <!-- 自定义tab -->
+    <view class="top-classify">
+      <view class="top-classify-item {{topClassifyId==1?'action':''}}">点餐</view>
+      <view class="top-classify-item {{topClassifyId==2?'action':''}}">评价</view>
+      <view class="top-classify-item {{topClassifyId==3?'action':''}}">商家</view>
+    </view>
   </view>
-  <view class="top-classify">
-    <view class="top-classify-item {{topClassifyId==1?'action':''}}">点餐</view>
-    <view class="top-classify-item {{topClassifyId==2?'action':''}}">评价</view>
-    <view class="top-classify-item {{topClassifyId==3?'action':''}}">商家</view>
-  </view>
+  <!-- 食物详情 -->
   <view class="container">
-    <scroll-view class="classify-container">
-      <view class="classify-item active" wx:for="{{goods}}" wx:key="" wx:for-item="classify">
-        <view class="classify-logo"></view>
-        <view class="classify-name">{{classify.classifyName}}</view>
+    <scroll-view class="classify-container" scroll-y="true">
+      <view class="classify-item {{classifySeletedId==classify.classifyId?'active':''}}" wx:for="{{goods}}" wx:key="id" wx:for-item="classify" data-classify-id="{{classify.classifyId}}" bindtap="tapClassify">
+        <view class="classify-logo" data-classify-id="{{classify.classifyId}}"></view>
+        <view class="classify-name" data-classify-id="{{classify.classifyId}}">{{classify.classifyName}}</view>
       </view>
     </scroll-view>
-    <scroll-view class="foods-container" >
-      <view class="foods" wx:for="{{goods}}" wx:key="" wx:for-item="classify">
+    <scroll-view class="foods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}"  bindscroll="onGoodsScroll">
+      <view class="foods" wx:for="{{goods}}" wx:key="" wx:for-item="classify" id="{{classify.classifyId}}">
         <view class="foods-classify">
           <view class="classify-name">{{classify.classifyName}}</view>
           <view class="classify-desc ellipsis">{{classify.classifyDesc}}</view>
@@ -65,6 +71,7 @@
       </view>
     </scroll-view>
   </view>
+  <!-- 购物车详情 -->
   <view class="cart-detail" hidden="{{cartDetailShowed}}">
     <view class="mask" bindtap="hideCartDetail"></view>
     <view class="list">
@@ -98,6 +105,7 @@
       </view>
     </view>
   </view>
+  <!-- 底部信息 -->
   <view class="cart">
     <view class="cart-logo-out" bindtap="showCartDetail">
       <view class="cart-logo-in">
@@ -115,6 +123,7 @@
       <text class="">去结算</text>
     </view>
   </view>
+  <!-- 规格弹出框 -->
   <view class="custom-dialog" hidden="{{dialogHidde}}" catchtouchmove="preventTouchMove"> 
     <view class="dialog-mask" bindtap="hideSpecDetail"></view>
     <view class="dialog-model">
@@ -141,6 +150,43 @@
           <view class="button">选好了</view>
         </view>
       </view>
+    </view>
+  </view>
+  <!-- 优惠弹出框 -->
+  <view class="discount-dialog" hidden="{{discount_dialog_hidde}}" catchtouchmove="preventTouchMove">
+    <view class="discount-dialog-mask" bindtap="hideDiscountDialog"></view>
+    <view class="discount-dialog-model" animation="{{animationData}}">
+      <view class="title">
+        <view class="fill"></view>
+        <view class="text">优惠活动</view>
+        <view class="cancel" bindtap="hideDiscountDialog"><image src="/image/cancel.png"></image></view>
+      </view>
+      <scroll-view class="content" scroll-y="true" scroll-left="100" catchtouchmove="preventTouchMove">
+        <view class="content-item">
+          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
+        </view>
+        <view class="content-item">
+          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
+        </view>
+        <view class="content-item">
+          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
+        </view>
+        <view class="content-item">
+          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
+        </view>
+        <view class="content-item">
+          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
+        </view>
+        <view class="content-item">
+          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
+        </view>
+        <view class="content-item">
+          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
+        </view>
+        <view class="content-item">
+          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
+        </view>
+      </scroll-view>
     </view>
   </view>
 </view>
