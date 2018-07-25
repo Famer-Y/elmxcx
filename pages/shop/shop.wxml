@@ -161,22 +161,7 @@
         <view class="text">优惠活动</view>
         <view class="cancel" bindtap="hideDiscountDialog"><image src="/image/cancel.png"></image></view>
       </view>
-      <scroll-view class="content" scroll-y="true" scroll-left="100" catchtouchmove="preventTouchMove">
-        <view class="content-item">
-          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
-        </view>
-        <view class="content-item">
-          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
-        </view>
-        <view class="content-item">
-          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
-        </view>
-        <view class="content-item">
-          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
-        </view>
-        <view class="content-item">
-          <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
-        </view>
+      <scroll-view class="content" scroll-y="true" scroll-left="100">
         <view class="content-item">
           <image src="/image/discount/sub.png"></image>满20减10，满40减15，满60减30
         </view>

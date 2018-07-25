@@ -10,7 +10,7 @@ page {
 }
 
 .main .header {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; /*当元素变化时的淡入淡出效果*/
 }
 
 .main .hidden {
@@ -107,7 +107,6 @@ page {
 .container {
   display: flex;
   height: 100%;
-  box-sizing: border-box;
   padding-bottom: 85px;
 }
 

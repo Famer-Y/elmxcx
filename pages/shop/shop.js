@@ -154,11 +154,11 @@ Page({
     }, 100);
   },
   onGoodsScroll: function (e) {
-    if (e.detail.scrollTop > 20 && !this.data.scrollDown) {
+    if (e.detail.scrollTop > 20 && !this.data.scrollDown) { // 隐藏顶部元素
       this.setData({
         scrollDown: true
       });
-    } else if (e.detail.scrollTop < 20 && this.data.scrollDown) {
+    } else if (e.detail.scrollTop < 20 && this.data.scrollDown) { // 显示顶部元素
       this.setData({
         scrollDown: false
       });
