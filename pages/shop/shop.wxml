@@ -83,28 +83,17 @@
     <view class="list">
       <view class="top">
         <view class="title">已选商品</view>
-        <view class="clear">清空</view>
+        <view class="clear" bindtap="clearCart">清空</view>
       </view>
       <view class="content">
-        <view class="content-item">
+        <view class="content-item" wx:for="{{cartList.foodList}}" wx:for-item="cart" wx:key="">
           <view class="goods-basis">
-            <view class="goods-name">加千张</view>
-            <view class="goods-price">￥3</view>
+            <view class="goods-name">{{cart.selected_food.food_name}}</view>
+            <view class="goods-price">￥{{cart.selected_food.food_price}}</view>
           </view>          
           <view class="goods-other">            
             <view class="remove"><image src="/image/sub.png"></image></view>
-            <view class="num">1</view>
-            <view class="insert"><image src="/image/add.png"></image></view>
-          </view>
-        </view>
-        <view class="content-item">
-          <view class="goods-basis">
-            <view class="goods-name">加千张</view>
-            <view class="goods-price">￥3</view>
-          </view>          
-          <view class="goods-other">            
-            <view class="remove"><image src="/image/sub.png"></image></view>
-            <view class="num">1</view>
+            <view class="num">{{cart.count}}</view>
             <view class="insert"><image src="/image/add.png"></image></view>
           </view>
         </view>
@@ -118,7 +107,7 @@
         <image src="/image/shop/cart-logo.png" mode="widthFix"></image>
       </view>
     </view>
-    <view class="cart-count">2</view>
+    <view class="cart-count">{{cartList.count}}</view>
     <view class="cart-total">
       <view class="total-price">￥10</view>
       <view class="cart-desc">满10元配送</view>
@@ -149,7 +138,7 @@
         </view>
         <view class="footer">
           <view class="price"><text style="font-size:10px;">￥</text>{{specAbout.food_price}}</view>
-          <view class="button" bindtap="" data-food-id="{{specAbout.food_id}}" bindtap="buy">选好了</view>
+          <view class="button" data-food-id="{{specAbout.food_id}}" bindtap="buy">选好了</view>
         </view>
       </view>
     </view>

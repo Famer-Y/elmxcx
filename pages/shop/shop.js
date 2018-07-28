@@ -15,12 +15,13 @@ Page({
     classifySeletedId: "c1",
     scrollDown: false,
     classifyViewed: null,
-    cartList:[],
+    cartList: {count: 0, foodList:[]},
     specAbout: null,
     select_specId: null,
     select_spec: null,
     select_food: null,
     select_foodId: null,
+    cur_select_food: null
   },
 
   /**
@@ -111,7 +112,7 @@ Page({
     var specId = e.target.dataset.specId;
     var foodId = e.target.dataset.foodId;
     var food_list = this.data.restaurant.food_list;
-    var cur_select_food;
+    var cur_food;
     for (var i in food_list) {
       if (foodId == food_list[i].food_id) {
         cur_food = food_list[i];
@@ -119,14 +120,50 @@ Page({
         this.setData({
           select_specId: specItemId,
           select_spec: food_list[i].specification[specId].spec_list[specItemId],
-          select_foodId: foodId
+          select_foodId: foodId,
+          cur_select_food: cur_food,
         });
       }
     }
     console.log(cur_food);
   },
   buy: function (e) {
-
+    var foodId = e.target.dataset.foodId;
+    var selected_food = this.data.cur_select_food;
+    if (selected_food == null || foodId != selected_food.food_id) {
+      return;
+    }
+    var select_count_food = {};
+    select_count_food.count = 1;
+    select_count_food.selected_food = selected_food;
+    var flag = false;
+    if (this.data.cartList != null) {
+      for (var i in this.data.cartList.foodList) {
+        if (foodId == this.data.cartList.foodList[i].selected_food.food_id) {
+          this.data.cartList.foodList[i].count += 1;
+          this.data.cartList.count += 1;
+          flag = true;
+        }
+      }
+      if (!flag) {
+        this.data.cartList.foodList.push(select_count_food);
+        this.data.cartList.count += 1;
+      }
+    } else {
+      this.data.cartList.foodList.push(select_count_food);
+      this.data.cartList.count += 1;
+    }
+    this.setData({
+      cartList: this.data.cartList,
+    });
+    this.hideSpecDetail();
+    console.log(this.data.cartList);
+  },
+  clearCart: function () {
+    this.setData({
+      cartList: { count: 0, foodList: [] },
+    });
+    this.hideCartDetail();
   },
   preventTouchMove: function (e) {
   },
