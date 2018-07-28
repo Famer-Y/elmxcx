@@ -8,13 +8,19 @@ Page({
    */
   data: {
     topClassifyId: 1,
-    goods: goods,
+    restaurant: goods.restaurant,
     cartDetailShowed: true,
     dialogHidde: true,
     discount_dialog_hidde: true,
     classifySeletedId: "c1",
     scrollDown: false,
-    classifyViewed: null
+    classifyViewed: null,
+    cartList:[],
+    specAbout: null,
+    select_specId: null,
+    select_spec: null,
+    select_food: null,
+    select_foodId: null,
   },
 
   /**
@@ -28,7 +34,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
@@ -41,42 +46,33 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
-  },
 
-  showSpecDetail: function() {
-    wx.showModal({
-      title: 'haha',
-      content: '',
-    })
   },
 
   showCartDetail: function () {
@@ -90,7 +86,17 @@ Page({
       cartDetailShowed: true
     });
   },
-  showSpecDetail: function () {
+  showSpecDetail: function (e) {
+    var foodId = e.target.dataset.foodId;
+    console.log(foodId);
+    var food_list = this.data.restaurant.food_list;
+    for (var i in food_list) {
+      if (foodId == food_list[i].food_id) {
+        this.setData({
+          specAbout: food_list[i]
+        });
+      }
+    }
     this.setData({
       dialogHidde: false
     });
@@ -99,6 +105,28 @@ Page({
     this.setData({
       dialogHidde: true
     });
+  },
+  tapSpec: function (e) {
+    var specItemId = e.target.dataset.specItemId;
+    var specId = e.target.dataset.specId;
+    var foodId = e.target.dataset.foodId;
+    var food_list = this.data.restaurant.food_list;
+    var cur_select_food;
+    for (var i in food_list) {
+      if (foodId == food_list[i].food_id) {
+        cur_food = food_list[i];
+        cur_food.specification[specId].select_spec = food_list[i].specification[specId].spec_list[specItemId];
+        this.setData({
+          select_specId: specItemId,
+          select_spec: food_list[i].specification[specId].spec_list[specItemId],
+          select_foodId: foodId
+        });
+      }
+    }
+    console.log(cur_food);
+  },
+  buy: function (e) {
+
   },
   preventTouchMove: function (e) {
   },
@@ -154,11 +182,11 @@ Page({
     }, 100);
   },
   onGoodsScroll: function (e) {
-    if (e.detail.scrollTop > 20 && !this.data.scrollDown) { // 隐藏顶部元素
+    if (e.detail.scrollTop > 10 && !this.data.scrollDown) { // 隐藏顶部元素
       this.setData({
         scrollDown: true
       });
-    } else if (e.detail.scrollTop < 20 && this.data.scrollDown) { // 显示顶部元素
+    } else if (e.detail.scrollTop < 10 && this.data.scrollDown) { // 显示顶部元素
       this.setData({
         scrollDown: false
       });

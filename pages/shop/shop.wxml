@@ -1,17 +1,17 @@
 <view class="main">
   <!-- 背景图和商家头像 -->
-  <view class="header {{scrollDown?'hidden':''}}">
+  <view class="header" hidden="{{scrollDown}}">
     <view class="top">
       <view class="top-image">
-        <image src="/image/index/show.jpg" mode="widthFix"></image>
+        <image src="{{restaurant.restaurant_background_url}}"></image>
       </view>
       <view class="top-avatar">
-        <image src="/image/index/classify.jpeg"></image>
+        <image src="{{restaurant.restaurant_avatar_url}}"></image>
       </view>
     </view>
     <!-- 商家详情 -->
     <view class="detail">
-      <view class="shop-name">兄妹俩麻辣爆肚(关庄店)</view>
+      <view class="shop-name">{{restaurant.restaurant_name}}</view>
       <view class="more">
         <text class="margin-custom">4.9</text>
         <text class="margin-custom">月售1109单</text>
@@ -19,55 +19,61 @@
         <text class="margin-custom">约36分钟</text>
         <text class="margin-custom">距离2.6km</text>
       </view>
-      <view class="sign">本店现推出满减活动,欢迎新ddddddddddddddd老顾客前来光临</view>
+      <view class="sign">{{restaurant.restaurant_description}}</view>
       <view class="activity" bindtap="showDiscountDialog">
         <view class="activity-item">
-          <image src="/image/discount/sub.png" class="sub"></image>满20减10，满40减15，满60减30
+          <image src="{{restaurant.restaurant_activity[0].activity_image_url}}" class="sub"></image>{{restaurant.restaurant_activity[0].activity_content}}
         </view>
-        <view class="activity-item">7个优惠
+        <view class="activity-item">{{restaurant.restaurant_activity.length}}个优惠
           <image src="/image/zhedie-black.png" style="width:10px;height:10px;margin-left:3px;"></image>
         </view>
       </view>
     </view>
+  </view>
     <!-- 自定义tab -->
-    <view class="top-classify">
-      <view class="top-classify-item {{topClassifyId==1?'action':''}}">点餐</view>
-      <view class="top-classify-item {{topClassifyId==2?'action':''}}">评价</view>
-      <view class="top-classify-item {{topClassifyId==3?'action':''}}">商家</view>
-    </view>
+  <view class="top-classify">
+    <view class="top-classify-item {{topClassifyId==1?'action':''}}">点餐</view>
+    <view class="top-classify-item {{topClassifyId==2?'action':''}}">评价</view>
+    <view class="top-classify-item {{topClassifyId==3?'action':''}}">商家</view>
   </view>
   <!-- 食物详情 -->
   <view class="container">
     <scroll-view class="classify-container" scroll-y="true">
-      <view class="classify-item {{classifySeletedId==classify.classifyId?'active':''}}" wx:for="{{goods}}" wx:key="id" wx:for-item="classify" data-classify-id="{{classify.classifyId}}" bindtap="tapClassify">
-        <view class="classify-logo" data-classify-id="{{classify.classifyId}}"></view>
-        <view class="classify-name" data-classify-id="{{classify.classifyId}}">{{classify.classifyName}}</view>
+      <view class="classify-item {{classifySeletedId==classify.classify_id?'active':''}}" wx:for="{{restaurant.classify_list}}" wx:key="id" wx:for-item="classify" data-classify-id="{{classify.classify_id}}" bindtap="tapClassify">
+        <view class="classify-logo" data-classify-id="{{classify.classify_id}}"></view>
+        <view class="classify-name" data-classify-id="{{classify.classify_id}}">{{classify.classify_name}}</view>
       </view>
     </scroll-view>
     <scroll-view class="foods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}"  bindscroll="onGoodsScroll">
-      <view class="foods" wx:for="{{goods}}" wx:key="" wx:for-item="classify" id="{{classify.classifyId}}">
+      <view class="foods" wx:for="{{restaurant.classify_list}}" wx:key="" wx:for-item="classify" id="{{classify.classify_id}}">
         <view class="foods-classify">
-          <view class="classify-name">{{classify.classifyName}}</view>
-          <view class="classify-desc ellipsis">{{classify.classifyDesc}}</view>
+          <view class="classify-name">{{classify.classify_name}}</view>
+          <view class="classify-desc ellipsis">{{classify.classify_description}}</view>
         </view>
-        <view class="foods-item" wx:for="{{classify.goodsList}}" wx:for-item="goods" wx:key="">
-          <view class="food-image">
-            <image src="{{goods.goodsPic}}" mode="widthFix"></image>
-          </view>
-          <view class="food-detail">
-            <view class="food-name">{{goods.goodsName}}</view>
-            <view class="food-desc ellipsis">{{goods.goodsDesc}}</view>
-            <view class="achievement">
-              <text class="sales">月售{{goods.goodsSales}}单</text>
-              <text>好评率{{goods.applauseRate}}%</text>
-            </view>
-            <view class="price-spec">
-              <view class="price">￥{{goods.goodsPrice}}</view>
-              <view class="spec" wx:if="{{goods.specList.length > 0}}" bindtap="showSpecDetail">选规格</view> 
-              <view class="buy-logo" wx:else><image src="/image/add.png"></image></view>
-            </view>
-          </view>
-        </view>
+        <block  wx:for="{{classify.food_list}}" wx:for-item="foodList" wx:key="">         
+          <block wx:for="{{restaurant.food_list}}" wx:for-item="food" wx:key="">
+            <block wx:if="{{foodList == food.food_id}}">
+              <view class="foods-item">
+                <view class="food-image">
+                  <image src="{{food.food_image_url}}" mode="widthFix"></image>
+                </view>
+                <view class="food-detail">
+                  <view class="food-name">{{food.food_name}}</view>
+                  <view class="food-desc ellipsis">{{food.food_description}}</view>
+                  <view class="achievement">
+                    <text class="sales">月售{{food.food_count}}单</text>
+                    <text>好评率{{food.food_good_ratings}}%</text>
+                  </view>
+                  <view class="price-spec">
+                    <view class="price">￥{{food.food_price}}</view>
+                    <view class="spec" wx:if="{{food.specification.length > 0}}" bindtap="showSpecDetail" data-food-id="{{food.food_id}}" data-classify-id="{{foodList}}">选规格</view> 
+                    <view class="buy-logo" wx:else><image src="/image/add.png"></image></view>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </block>
+        </block>
       </view>
     </scroll-view>
   </view>
@@ -130,24 +136,20 @@
       <view class="dialog-content">
         <view class="top">
           <view class="fill"></view>
-          <view class="title">爆肚龙口粉丝</view>
+          <view class="title">{{specAbout.food_name}}</view>
           <view class="cancel" bindtap="hideSpecDetail"><image src="/image/cancel.png"></image></view>
         </view>
         <view class="spec">
-          <view class="spec-item">
-            <view class="spec-title">口味</view>
+          <view class="spec-item" wx:for="{{specAbout.specification}}" wx:for-item="spec" wx:key="" wx:for-index="specId">
+            <view class="spec-title">{{spec.spec_title}}</view>
             <view class="spec-content">
-              <view class="spec-content-item active">微辣</view>
-              <view class="spec-content-item">微辣</view>
-              <view class="spec-content-item">微辣</view>
-              <view class="spec-content-item">微辣</view>
-              <view class="spec-content-item">微辣</view>
+              <view class="spec-content-item {{select_specId==specItemId && select_foodId==specAbout.food_id?'active':''}}" wx:for="{{spec.spec_list}}" wx:for-index="specItemId" wx:for-item="type" wx:key="" data-spec-item-id="{{specItemId}}" data-spec-id="{{specId}}" data-food-id="{{specAbout.food_id}}" bindtap="tapSpec">{{type}}</view>
             </view>
           </view>
         </view>
         <view class="footer">
-          <view class="price"><text style="font-size:10px;">￥</text>10</view>
-          <view class="button">选好了</view>
+          <view class="price"><text style="font-size:10px;">￥</text>{{specAbout.food_price}}</view>
+          <view class="button" bindtap="" data-food-id="{{specAbout.food_id}}" bindtap="buy">选好了</view>
         </view>
       </view>
     </view>
